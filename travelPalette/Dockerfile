@@ -1,5 +1,5 @@
-# 1. 빌드 단계
-FROM amazoncorretto:17-alpine AS build
+# 1. 빌드 단계 (Java 21 JDK)
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
 
 COPY gradlew .
@@ -11,8 +11,8 @@ COPY src src
 RUN chmod +x ./gradlew
 RUN ./gradlew build -x test --no-daemon
 
-# 2. 실행 단계
-FROM amazoncorretto:17-alpine
+# 2. 실행 단계 (Java 21 JRE)
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 COPY --from=build /app/build/libs/*-SNAPSHOT.jar app.jar
