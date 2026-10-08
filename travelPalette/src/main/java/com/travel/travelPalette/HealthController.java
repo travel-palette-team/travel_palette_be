@@ -1,4 +1,4 @@
-package com.travel.travelpalette;
+package com.travel.travelPalette;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
